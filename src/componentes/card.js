@@ -17,12 +17,14 @@ const Item = styled.div`
 
 
 export default class Card extends React.Component{
+
     render(){
+
         return (
             <Item>
-                <img src="https://i0.wp.com/fatosdesconhecidos.com.br/wp-content/uploads/2019/06/Elon-Falcon-Heavy.jpg?resize=1000,500" />
-                <h4>Produto XXX</h4>
-                <p>R$ 100,00</p>
+                <img src={this.props.linkDaImagem} />
+                <h4>{this.props.nomeDoProduto}</h4>
+                <p>{this.props.valorDoProduto}</p>
                 <button>Adicionar ao Carrinho</button>
             </Item>
         )
