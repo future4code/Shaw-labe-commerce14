@@ -24,21 +24,49 @@ const BarraEsquerda = styled.div`
         }
 `
 
+
+
 export default class Pesquisa extends React.Component{
+    state ={
+        valorMinimo : "",
+        valorMaximo : ""
+    }
+
+    trocaValorMin =(event) =>{
+        this.setState({valorMinimo:event.target.value})
+    }
+    trocaValorMax =(event) =>{
+        this.setState({valorMaximo:event.target.value})
+    }
+
+    
+
+
     render(){
+        
+
+        
         return(
             <BarraEsquerda>
                 <h3>Filtros</h3>
                 <div>
                 <label>Valor mínimo:</label>
-                <input />
+                <input 
+                value={this.state.valorMinimo}
+                onChange={this.trocaValorMin}
+                
+                />
                 <label>Valor máximo:</label>
-                <input />
+                <input 
+                value={this.state.valorMaximo}
+                onChange={this.trocaValorMax}
+                />
                 <label>Busca por nome:</label>
                 <input />
                 </div>
                 
             </BarraEsquerda>
+            
         )
     }
 }

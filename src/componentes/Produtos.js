@@ -51,59 +51,58 @@ export default class Produtos extends React.Component {
                 imageUrl: "https://picsum.photos/200/200",
             }
         ],
-        filtro: ""
-    }
-
-    filterCrescente = () => {
-
-            const arrayOrdenado = this.state.produtos.sort(function(a, b) {
-                if(a.value < b.value) {
-                    return -1;
-                } else {
-                    return true;
-                }
-            })
-
-            this.setState ({produtos: arrayOrdenado})
+        filtro: "Nenhum",
         
     }
-
-    filterDecrescente = () => {
-
-        const arrayOrdenado = this.state.produtos.sort(function(a, b) {
-            if(a.value < b.value) {
-                return 1;
-            } else {
-                return false;
-            }
-        })
-
-        this.setState ({produtos: arrayOrdenado})
-    
-}
-
-onChangeFilter = () => {
-    let valor
-
-    if (this.state.filtro === "Crescente"){
-        valor = this.filterCrescente
-    } else {
-        valor = this.filterDecrescente
-    }
-    
-    return valor
-}
-
     setFiltro = (event) => {
         this.setState({
             filtro: event.target.value
         })
     }
 
-render(){
+    // filtroValor = (minimo,maximo)=>{
+    //     maximo = this.props.valMax
+    //     minimo = this.props.valMin
+    //     const filtro = this.state.produtos.filter((elem)=>{
+    //         return elem.value >= minimo && elem.value <= maximo
+    //     })
+    //     this.setState({produtos : filtro})
+    // } 
+
+    render(){
+
+        
+   
+    
+    
+    if (this.state.filtro === "Crescente"){
+    
+    this.state.produtos.sort((a,b)=>{
+        if (a.value > b.value){
+            return 1
+        }
+        if (b.value > a.value){
+            return -1
+        }
+        return 0
+    })
+    }
+
+    if (this.state.filtro === "Decrescente"){
+        this.state.produtos.sort((a,b)=>{
+            if (a.value > b.value){
+                return -1
+            }
+            if (b.value > a.value){
+                return 1
+            }
+            return 0
+        })
+    }
 
     const listCards = this.state.produtos.map((elemento) => {
         return(
+
             <Card 
                 nomeDoProduto = {elemento.name}
                 linkDaImagem = {elemento.imageUrl}
@@ -115,12 +114,13 @@ render(){
     return (
         <PaginaCentral>
             <div className="head">
-                <p>Quantidade de Produtos:XXX</p>
+                <p>Quantidade de Produtos:{this.state.produtos.length}</p>
                 <div className="ordenacao">
                     <p>Ordenação:</p>
-                    <select value={this.state.filtro} onChange={this.onChangeFilter}>
-                        <option value="Crescente">Crescente</option>
-                        <option value="Decrescente">Decrescente</option>
+                    <select value={this.state.filtro} onChange={this.setFiltro}>
+                        <option>Nenhum</option>
+                        <option>Crescente</option>
+                        <option>Decrescente</option>
                     </select>
                 </div>
             </div>
