@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./card";
+import Card from "./Card";
 
 const PaginaCentral = styled.div`
     display: flex;
@@ -19,8 +19,6 @@ const PaginaCentral = styled.div`
             display: flex;
         }
 `
-
-
 
 export default class Produtos extends React.Component {
 
@@ -54,81 +52,69 @@ export default class Produtos extends React.Component {
         filtro: "Nenhum",
         
     }
+
     setFiltro = (event) => {
         this.setState({
             filtro: event.target.value
         })
     }
 
-    // filtroValor = (minimo,maximo)=>{
-    //     maximo = this.props.valMax
-    //     minimo = this.props.valMin
-    //     const filtro = this.state.produtos.filter((elem)=>{
-    //         return elem.value >= minimo && elem.value <= maximo
-    //     })
-    //     this.setState({produtos : filtro})
-    // } 
-
     render(){
 
-        
-   
-    
-    
-    if (this.state.filtro === "Crescente"){
-    
-    this.state.produtos.sort((a,b)=>{
-        if (a.value > b.value){
-            return 1
-        }
-        if (b.value > a.value){
-            return -1
-        }
-        return 0
-    })
-    }
+        if (this.state.filtro === "Crescente"){
 
-    if (this.state.filtro === "Decrescente"){
-        this.state.produtos.sort((a,b)=>{
-            if (a.value > b.value){
-                return -1
-            }
-            if (b.value > a.value){
-                return 1
-            }
-            return 0
+            this.state.produtos.sort((a,b)=>{
+                if (a.value > b.value){
+                    return 1
+                }
+                if (b.value > a.value){
+                    return -1
+                }
+                return 0
+            })
+        }
+
+        if (this.state.filtro === "Decrescente"){
+
+            this.state.produtos.sort((a,b)=>{
+                if (a.value > b.value){
+                    return -1
+                }
+                if (b.value > a.value){
+                    return 1
+                }
+                return 0
+            })
+        }
+
+        const listCards = this.state.produtos.map((elemento) => {
+            return(
+                <Card 
+                    nomeDoProduto = {elemento.name}
+                    linkDaImagem = {elemento.imageUrl}
+                    valorDoProduto = {elemento.value}
+                />
+            )
         })
-    }
 
-    const listCards = this.state.produtos.map((elemento) => {
-        return(
-
-            <Card 
-                nomeDoProduto = {elemento.name}
-                linkDaImagem = {elemento.imageUrl}
-                valorDoProduto = {elemento.value}
-            />
-        )
-    })
-
-    return (
-        <PaginaCentral>
-            <div className="head">
-                <p>Quantidade de Produtos:{this.state.produtos.length}</p>
-                <div className="ordenacao">
-                    <p>Ordenação:</p>
-                    <select value={this.state.filtro} onChange={this.setFiltro}>
-                        <option>Nenhum</option>
-                        <option>Crescente</option>
-                        <option>Decrescente</option>
-                    </select>
+        return (
+            <PaginaCentral>
+                <div className="head">
+                    <p>Quantidade de Produtos:{this.state.produtos.length}</p>
+                    <div className="ordenacao">
+                        <p>Ordenação:</p>
+                        <select value={this.state.filtro} onChange={this.setFiltro}>
+                            <option>Nenhum</option>
+                            <option>Crescente</option>
+                            <option>Decrescente</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div className="produtos">
-                {listCards}
-            </div>
-        </PaginaCentral>
-    )
-}
+                <div className="produtos">
+                    {listCards}
+                </div>
+            </PaginaCentral>
+        )
+    }
 }
