@@ -5,23 +5,32 @@ import styled from "styled-components"
 const BarraEsquerda = styled.div`
     display: flex;
     flex-direction: column;
-    width: 250px;
-    border-style: solid;
-    height: 500px;
-    
+    width: 20vw;
+    height: 80vh;
+    border: 1px solid black;
+    margin: 1em;
 
+    h3{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1em;
+    }
 
-        input{
-            margin-bottom: 0.5em;
-        }
+    div{
+        display: flex;
+        flex-direction: column;
+        margin-left: 1em;
+    }
 
-        h3{
-            margin: 1em;
-        }
-        div{
-            width: 80%;
-            align-self: center;
-        }
+    label {
+        margin-bottom: 0.5em;
+    }
+
+    input{
+        width: 50%;
+        margin-bottom: 1em;
+    }
 `
 
 export default class Pesquisa extends React.Component{
@@ -30,14 +39,13 @@ export default class Pesquisa extends React.Component{
             <BarraEsquerda>
                 <h3>Filtros</h3>
                 <div>
-                <label>Valor mínimo:</label>
-                <input />
-                <label>Valor máximo:</label>
-                <input />
-                <label>Busca por nome:</label>
-                <input />
+                    <label>Valor mínimo:</label>
+                    <input type = {"number"}/>
+                    <label>Valor máximo:</label>
+                    <input type = {"number"}/>
+                    <label>Busca por nome:</label>
+                    <input />
                 </div>
-                
             </BarraEsquerda>
         )
     }

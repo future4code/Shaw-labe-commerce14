@@ -1,25 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 
-const BarraEsquerda = styled.div`
+const BarraDireita = styled.div`
     display: flex;
     flex-direction: column;
-    border-style: solid;
-    border-color: black;
-    width: 200px;
-    height: 500px;
+    width: 20vw;
+    height: 80vh;
+    border: 1px solid black;
+    margin: 1em;
+
+    h3{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    p {
+        margin-left: 1em;
+    }
 `
 
 export default class Carrinho extends React.Component{
     render(){
         return(
-            <BarraEsquerda>
-              <h3>Carrinho:</h3>
+            <BarraDireita>
+                <h3>Carrinho:</h3>
                 <div>
                     <p>*produtos</p>
                 </div>
                 <p>Valor total:</p>
-            </BarraEsquerda>
+            </BarraDireita>
         )
     }
 }
