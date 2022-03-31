@@ -1,8 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-
-const BarraDireita = styled.div`
+const BarraEsquerda = styled.div`
     display: flex;
     flex-direction: column;
     width: 20vw;
@@ -28,12 +27,10 @@ const BarraDireita = styled.div`
     }
 
     input{
-        width: 50%;
+        width: 70%;
         margin-bottom: 1em;
     }
 `
-
-
 
 export default class Pesquisa extends React.Component{
   
@@ -43,16 +40,17 @@ export default class Pesquisa extends React.Component{
     }
 
     trocaValorMin =(event) =>{
-        this.setState({valorMinimo:event.target.value})
+        this.setState({valorMinimo: event.target.value})
     }
+
     trocaValorMax =(event) =>{
-        this.setState({valorMaximo:event.target.value})
+        this.setState({valorMaximo: event.target.value})
     }
 
     render(){
  
         return(
-            <BarraDireita>
+            <BarraEsquerda>
                 <h3>Filtros</h3>
                 <div>
                   <label>Valor mínimo:</label>
@@ -61,16 +59,18 @@ export default class Pesquisa extends React.Component{
                   value={this.state.valorMinimo}
                   onChange={this.trocaValorMin}
                   />
+
                   <label>Valor máximo:</label>
                   <input
                   type = {"number"}
                   value={this.state.valorMaximo}
                   onChange={this.trocaValorMax}
                   />
+
                   <label>Busca por nome:</label>
                   <input />
                 </div>
-            </BarraDireita>
+            </BarraEsquerda>
         )
     }
 }
