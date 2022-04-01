@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
+import Pesquisa from "./Pesquisa";
 
 const PaginaCentral = styled.div`
     display: flex;
@@ -50,7 +51,7 @@ export default class Produtos extends React.Component {
             }
         ],
         filtro: "Nenhum",
-        
+        pesquisa: ""
     }
 
     setFiltro = (event) => {
@@ -58,6 +59,12 @@ export default class Produtos extends React.Component {
             filtro: event.target.value
         })
     }
+
+    // updatePesquisa = (event) => {
+    //     this.setState ({
+    //         pesquisa: event.target.value
+    //     })
+    // }
 
     render(){
 
@@ -87,7 +94,11 @@ export default class Produtos extends React.Component {
             })
         }
 
-        const listCards = this.state.produtos.map((elemento) => {
+        const listCards = this.state.produtos
+        // .filter(produto => {
+        //     return produto.name.includes(this.state.pesquisa)
+        // })
+        .map((elemento) => {
             return(
                 <Card 
                     nomeDoProduto = {elemento.name}
@@ -109,6 +120,13 @@ export default class Produtos extends React.Component {
                             <option>Decrescente</option>
                         </select>
                     </div>
+                    {/* <div>
+                        <label>Busca por nome:</label>
+                        <input placeholder="Pesquisa"
+                        value={this.state.pesquisa}
+                        onChange={this.updatePesquisa}
+                        />
+                    </div> */}
                 </div>
 
                 <div className="produtos">
