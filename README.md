@@ -1,4 +1,4 @@
-# :page_facing_up: LANDING PAGE: LabECommerce
+# :page_facing_up: LabECommerce
 Projeto proposto pela instituição Labenu.
 <br>
 <br>
