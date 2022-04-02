@@ -6,7 +6,7 @@ const Item = styled.div`
     flex-direction: column;
     justify-content: space-between;
     width: 20vw;
-    height: 60vh;
+    height: 40vh;
     border: 1px solid black;
     border-radius: 16px;
     margin: 0 0.5em;
@@ -25,7 +25,6 @@ const Item = styled.div`
         align-self: center;
     } 
 `
-
 
 export default class Card extends React.Component{
 
