@@ -5,19 +5,18 @@ Projeto proposto pela instituição Labenu.
 Um e-commerce de itens espaciais.
 
 ## :heavy_check_mark: O que funciona
-* 
+* Ordenação (Crescente, Decrescente)
 
 ## :x: O que não funciona
-* 
+* Filtros e Carrinho
 
 ## :link: Link Surge 
-* 
-
+* outgoing-machine.surge.sh
 
 ## :camera: Imagens
 
 ### **DESKTOP**
-
+![image](https://user-images.githubusercontent.com/98998030/161362985-4421f369-40ff-4f54-8784-cf403832fea0.png)
 
 ## :black_nib: Autores
 
