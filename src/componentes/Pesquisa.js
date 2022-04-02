@@ -47,13 +47,7 @@ export default class Pesquisa extends React.Component{
     trocaValorMax =(event) =>{
         this.setState({valorMaximo: event.target.value})
     }
-
-    // updatePesquisa = (event) => {
-    //     this.setState ({
-    //         pesquisa: event.target.value
-    //     })
-    // }
-
+    
     render(){
  
         return(
@@ -63,24 +57,23 @@ export default class Pesquisa extends React.Component{
                   <label>Valor mínimo:</label>
                   <input 
                   type = {"number"}
-                  value={this.state.valorMinimo}
-                  onChange={this.trocaValorMin}
+                  value={this.props.minFilter}
+                  onChange={this.props.onChangeMin}
                   />
 
                   <label>Valor máximo:</label>
                   <input
                   type = {"number"}
-                  value={this.state.valorMaximo}
-                  onChange={this.trocaValorMax}
+                  value={this.props.maxFilter}
+                  onChange={this.props.onChangeMax}
                   />
 
-                  {/* <label>Busca por nome:</label>
+
+                  <label>Busca por nome:</label>
                   <input 
-                  placeholder="Pesquisa"
-                  value={this.state.pesquisa}
-                  onChange={this.updatePesquisa}
-                  /> */}
-                  
+                  value={this.props.nomeFilter}
+                  onChange={this.props.onChangeNome}
+                  />
                 </div>
             </BarraEsquerda>
         )

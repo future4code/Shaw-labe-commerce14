@@ -6,6 +6,7 @@ import Pesquisa from "./Pesquisa";
 const PaginaCentral = styled.div`
     display: flex;
     flex-direction: column;
+    width: 60vw;
 
         .head{
             display: flex;
@@ -21,56 +22,55 @@ const PaginaCentral = styled.div`
         }
 `
 
-export default class Produtos extends React.Component {
+export const produtos = [
+    {
+        id: Date.now(),
+        name: "b",
+        value: 1000000.0,
+        imageUrl: "https://picsum.photos/200/200",
+        qnt: 0
+    },
+    {
+        id: Date.now(),
+        name: "a",
+        value: 10.0,
+        imageUrl: "https://picsum.photos/200/200",
+        qnt: 0
+    },
+    {
+        id: Date.now(),
+        name: "c",
+        value: 100.0,
+        imageUrl: "https://picsum.photos/200/200",
+        qnt: 0
+    },
+    {
+        id: Date.now(),
+        name: "e4",
+        value: 1000.0,
+        imageUrl: "https://picsum.photos/200/200",
+        qnt: 0
+    }
+]
 
+export class Produtos extends React.Component {
+    //botar produtos em APP.JS para fazer o controle de renderização dos cards.
     state = {
-        produtos: [
-            {
-                id: Date.now(),
-                name: "b",
-                value: 1000000.0,
-                imageUrl: "https://picsum.photos/200/200",
-            },
-            {
-                id: Date.now(),
-                name: "a",
-                value: 10.0,
-                imageUrl: "https://picsum.photos/200/200",
-            },
-            {
-                id: Date.now(),
-                name: "c",
-                value: 100.0,
-                imageUrl: "https://picsum.photos/200/200",
-            },
-            {
-                id: Date.now(),
-                name: "e4",
-                value: 1000.0,
-                imageUrl: "https://picsum.photos/200/200",
-            }
-        ],
-        filtro: "Nenhum",
-        pesquisa: ""
+
+        ordenar: "Nenhum"
+
     }
 
-    setFiltro = (event) => {
-        this.setState({
-            filtro: event.target.value
-        })
+    onChangeOrdenar = (event) => {
+        this.setState({ ordenar: event.target.value })
     }
 
-    // updatePesquisa = (event) => {
-    //     this.setState ({
-    //         pesquisa: event.target.value
-    //     })
-    // }
 
     render(){
 
-        if (this.state.filtro === "Crescente"){
+        if (this.state.ordenar === "Crescente"){
 
-            this.state.produtos.sort((a,b)=>{
+            this.props.produtos.sort((a,b)=>{
                 if (a.value > b.value){
                     return 1
                 }
@@ -81,9 +81,9 @@ export default class Produtos extends React.Component {
             })
         }
 
-        if (this.state.filtro === "Decrescente"){
+        if (this.state.ordenar === "Decrescente"){
 
-            this.state.produtos.sort((a,b)=>{
+            this.props.produtos.sort((a,b)=>{
                 if (a.value > b.value){
                     return -1
                 }
@@ -94,11 +94,23 @@ export default class Produtos extends React.Component {
             })
         }
 
-        const listCards = this.state.produtos
-        // .filter(produto => {
-        //     return produto.name.includes(this.state.pesquisa)
-        // })
-        .map((elemento) => {
+
+        const listFilter = this.props.produtos
+        .filter(produto => 
+            produto.value >= this.props.minFilter
+        )
+        .filter(produto => 
+            produto.value <= this.props.maxFilter
+        )
+        .filter(produto => 
+            produto.name.includes(this.props.nomeFilter)
+        )
+        
+        let renderizaCards;
+        {listFilter.length ? renderizaCards = listFilter : renderizaCards = this.props.produtos}
+        
+        const listCards = renderizaCards.map((elemento) => {
+
             return(
                 <Card 
                     nomeDoProduto = {elemento.name}
@@ -111,25 +123,18 @@ export default class Produtos extends React.Component {
         return (
             <PaginaCentral>
                 <div className="head">
-                    <p>Quantidade de Produtos:{this.state.produtos.length}</p>
+                    <p>Quantidade de Produtos: {this.props.produtos.length}</p>
                     <div className="ordenacao">
-                        <p>Ordenação:</p>
-                        <select value={this.state.filtro} onChange={this.setFiltro}>
+                        <p>Ordenação: </p>
+                        <select value={this.state.ordenar} onChange={this.onChangeOrdenar}>
                             <option>Nenhum</option>
                             <option>Crescente</option>
                             <option>Decrescente</option>
                         </select>
                     </div>
-                    {/* <div>
-                        <label>Busca por nome:</label>
-                        <input placeholder="Pesquisa"
-                        value={this.state.pesquisa}
-                        onChange={this.updatePesquisa}
-                        />
-                    </div> */}
                 </div>
 
-                <div className="produtos">
+                <div className="produtos" >
                     {listCards}
                 </div>
             </PaginaCentral>
