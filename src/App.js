@@ -33,6 +33,17 @@ export default class App extends React.Component{
 
   render(){
 
+    const listFilter = this.state.produtos
+    .filter(produto => 
+      this.state.minFilter === "" || produto.value >= this.state.minFilter
+    )
+    .filter(produto => 
+      this.state.maxFilter === "" || produto.value <= this.state.maxFilter
+    )
+    .filter(produto => 
+      this.state.nomeFilter === "" || produto.name.includes(this.state.nomeFilter)
+    )
+
     return (
       <MainContainer>
 
@@ -49,7 +60,7 @@ export default class App extends React.Component{
           minFilter = {this.state.minFilter}
           maxFilter = {this.state.maxFilter}
           nomeFilter = {this.state.nomeFilter}
-          produtos = {this.state.produtos}
+          produtos = {listFilter}
         />
 
         <Carrinho 

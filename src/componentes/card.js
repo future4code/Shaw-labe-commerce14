@@ -5,7 +5,7 @@ const Item = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20vw;
+    width: 22.5%;
     height: 40vh;
     border: 1px solid black;
     border-radius: 16px;

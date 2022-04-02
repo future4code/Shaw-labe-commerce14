@@ -1,25 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./Card";
-import Pesquisa from "./Pesquisa";
+import Card from "./Card"
 
 const PaginaCentral = styled.div`
     display: flex;
     flex-direction: column;
     width: 60vw;
 
-        .head{
-            display: flex;
-            justify-content: space-between;
-        }
+    .head{
+        display: flex;
+        justify-content: space-between;
+    }
 
-        .ordenacao{
-            display: flex;
-            align-items: center;
-        }
-        .produtos{
-            display: flex;
-        }
+    .ordenacao{
+        display: flex;
+        align-items: center;
+    }
+
+    .produtos{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 `
 
 export const produtos = [
@@ -39,7 +42,7 @@ export const produtos = [
     },
     {
         id: Date.now(),
-        name: "c",
+        name: "e5",
         value: 100.0,
         imageUrl: "https://picsum.photos/200/200",
         qnt: 0
@@ -54,17 +57,14 @@ export const produtos = [
 ]
 
 export class Produtos extends React.Component {
-    //botar produtos em APP.JS para fazer o controle de renderização dos cards.
+    
     state = {
-
         ordenar: "Nenhum"
-
     }
 
     onChangeOrdenar = (event) => {
         this.setState({ ordenar: event.target.value })
     }
-
 
     render(){
 
@@ -93,23 +93,8 @@ export class Produtos extends React.Component {
                 return 0
             })
         }
-
-
-        const listFilter = this.props.produtos
-        .filter(produto => 
-            produto.value >= this.props.minFilter
-        )
-        .filter(produto => 
-            produto.value <= this.props.maxFilter
-        )
-        .filter(produto => 
-            produto.name.includes(this.props.nomeFilter)
-        )
         
-        let renderizaCards;
-        {listFilter.length ? renderizaCards = listFilter : renderizaCards = this.props.produtos}
-        
-        const listCards = renderizaCards.map((elemento) => {
+        const listCards = this.props.produtos.map((elemento) => {
 
             return(
                 <Card 
