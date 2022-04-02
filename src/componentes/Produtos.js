@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
+import Pesquisa from "./Pesquisa";
 
 const PaginaCentral = styled.div`
     display: flex;
@@ -55,12 +56,15 @@ export const produtos = [
 export class Produtos extends React.Component {
     //botar produtos em APP.JS para fazer o controle de renderização dos cards.
     state = {
+
         ordenar: "Nenhum"
+
     }
 
     onChangeOrdenar = (event) => {
         this.setState({ ordenar: event.target.value })
     }
+
 
     render(){
 
@@ -90,6 +94,7 @@ export class Produtos extends React.Component {
             })
         }
 
+
         const listFilter = this.props.produtos
         .filter(produto => 
             produto.value >= this.props.minFilter
@@ -105,6 +110,7 @@ export class Produtos extends React.Component {
         {listFilter.length ? renderizaCards = listFilter : renderizaCards = this.props.produtos}
         
         const listCards = renderizaCards.map((elemento) => {
+
             return(
                 <Card 
                     nomeDoProduto = {elemento.name}

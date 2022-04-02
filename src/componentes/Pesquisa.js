@@ -33,6 +33,21 @@ const BarraEsquerda = styled.div`
 `
 
 export default class Pesquisa extends React.Component{
+  
+    state ={
+        valorMinimo : "",
+        valorMaximo : "",
+        pesquisa: ""
+    }
+
+    trocaValorMin =(event) =>{
+        this.setState({valorMinimo: event.target.value})
+    }
+
+    trocaValorMax =(event) =>{
+        this.setState({valorMaximo: event.target.value})
+    }
+    
     render(){
  
         return(
@@ -52,6 +67,7 @@ export default class Pesquisa extends React.Component{
                   value={this.props.maxFilter}
                   onChange={this.props.onChangeMax}
                   />
+
 
                   <label>Busca por nome:</label>
                   <input 
