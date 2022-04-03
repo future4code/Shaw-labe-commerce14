@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "./Card"
+import Carrinho from "./Carrinho";
 
 const PaginaCentral = styled.div`
     display: flex;
@@ -59,14 +60,27 @@ export const produtos = [
 export class Produtos extends React.Component {
     
     state = {
-        ordenar: "Nenhum"
+        ordenar: "Nenhum",
+        produtosCarrinho:[],
+        
     }
+
+    produtos = []
 
     onChangeOrdenar = (event) => {
         this.setState({ ordenar: event.target.value })
     }
 
+    recuperaCarrinho = (elemento) =>{
+        this.produtos.push(elemento)
+
+        this.props.recupera(this.produtos)
+    }
+  
+
     render(){
+
+              
 
         if (this.state.ordenar === "Crescente"){
 
@@ -101,7 +115,11 @@ export class Produtos extends React.Component {
                     nomeDoProduto = {elemento.name}
                     linkDaImagem = {elemento.imageUrl}
                     valorDoProduto = {elemento.value}
+                    idProduto = {elemento.id}
+                    recupera = {this.recuperaCarrinho}
                 />
+
+
             )
         })
 

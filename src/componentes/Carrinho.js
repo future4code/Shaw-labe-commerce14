@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+
+
 const BarraDireita = styled.div`
     display: flex;
     flex-direction: column;
@@ -20,15 +22,38 @@ const BarraDireita = styled.div`
     }
 `
 
+
 export default class Carrinho extends React.Component{
     render(){
+        
+        
+        let soma = 0
+
+        const carrinhoDeCompras = this.props.lista.map((elemento)=>{
+            
+            
+            return <p>{elemento.nome} - {elemento.valor}</p> 
+            
+        })
+        
+        
+
+        const somaCarrinho = this.props.lista.map((elemento)=>{
+
+            return soma+=elemento.valor
+        })
+
+        
+        
+        
         return(
             <BarraDireita>
-                <h3>Carrinho:</h3>
+                <h3>Carrinho De Compras</h3>
                 <div>
-                    <p>*produtos</p>
+                    <p>{carrinhoDeCompras}</p>
                 </div>
-                <p>Valor total:</p>
+               
+                <p>Valor Total : {soma}</p>
             </BarraDireita>
         )
     }

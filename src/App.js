@@ -16,8 +16,13 @@ export default class App extends React.Component{
     minFilter: "",
     maxFilter: "",
     nomeFilter: "",
-    produtos: produtos
+    produtos: produtos,
+    produtosCarrinho:[]
+    
   }
+
+  const 
+
 
   onChangeMin = (event) => {
     this.setState({ minFilter: event.target.value })
@@ -30,8 +35,13 @@ export default class App extends React.Component{
   onChangeNome = (event) => {
     this.setState({ nomeFilter: event.target.value })
   }
+  recuperaProdutos = (elemento) =>{
+    this.setState({produtosCarrinho : elemento})
+}
 
   render(){
+
+    const listalista = this.state.produtosCarrinho
 
     const listFilter = this.state.produtos
     .filter(produto => 
@@ -43,7 +53,9 @@ export default class App extends React.Component{
     .filter(produto => 
       this.state.nomeFilter === "" || produto.name.includes(this.state.nomeFilter)
     )
+    
 
+  console.log(listalista)  
     return (
       <MainContainer>
 
@@ -61,10 +73,11 @@ export default class App extends React.Component{
           maxFilter = {this.state.maxFilter}
           nomeFilter = {this.state.nomeFilter}
           produtos = {listFilter}
+          recupera = {this.recuperaProdutos}
         />
 
         <Carrinho 
-          
+          lista = {listalista}
         />
       </MainContainer>
     )
