@@ -1,7 +1,5 @@
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
-import Carrinho from './Carrinho'
-
+import styled from 'styled-components'
 
 const Item = styled.div`
     display: flex;
@@ -30,42 +28,32 @@ const Item = styled.div`
     } 
 `
 
-
-
 export default class Card extends React.Component{
 
-    
-    
     onClickCarrinho = () =>{
-      let novo ={
+        let novo ={
           nome:this.props.nomeDoProduto,
           valor:this.props.valorDoProduto,
           id: Date.now()
-      }
-
-      this.props.recupera(novo)
+        }
+        this.props.recupera(novo)
     }
   
-
     render(){
-
-          
-        
 
         return (
             <Item>
-                
                 <img src={this.props.linkDaImagem} alt="Produto" />
                 <h4>{this.props.nomeDoProduto}</h4>
                 <p>R$ {this.props.valorDoProduto}</p>
+
                 <button 
                 onClick={this.onClickCarrinho}
                 value={this.props.idProduto}
-                
-
-                >Adicionar ao Carrinho</button>
-            </Item>
-            
+                >
+                Adicionar ao Carrinho
+                </button>
+            </Item>  
         )
         
     }

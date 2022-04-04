@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./Card"
-import Prod1 from "./imagens/Astronomia.jpg"
-import Carrinho from "./Carrinho";
-
+import Card from "./card"
 
 const PaginaCentral = styled.div`
     display: flex;
@@ -82,20 +79,15 @@ export class Produtos extends React.Component {
         
     }
 
-
     onChangeOrdenar = (event) => {
         this.setState({ ordenar: event.target.value })
     }
 
     recuperaCarrinho = (novo) =>{
-        
         this.props.recupera(novo)
     }
   
-
     render(){
-
-              
 
         if (this.state.ordenar === "Crescente"){
 
@@ -133,8 +125,6 @@ export class Produtos extends React.Component {
                     idProduto = {elemento.id}
                     recupera = {this.recuperaCarrinho}
                 />
-
-
             )
         })
 
