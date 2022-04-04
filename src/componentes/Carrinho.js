@@ -28,9 +28,14 @@ const BarraDireita = styled.div`
 
 
 `
-const tabelaCarrinho = styled.div`
+const TabelaCarrinho = styled.div`
     display: flex;
     flex-direction: row;
+
+    button{
+        border-radius: 5px;
+        width: 50%;
+    }
 
 `
 
@@ -55,13 +60,13 @@ export default class Carrinho extends React.Component{
             
             
             return (
-            <tabelaCarrinho>
+            <TabelaCarrinho>
             <p>{elemento.nome} - {elemento.valor}</p>
              <button
              value={index}
              onClick={this.deletaElemento}
              >Deletar</button>
-             </tabelaCarrinho>   
+             </TabelaCarrinho>   
             )
         })
         

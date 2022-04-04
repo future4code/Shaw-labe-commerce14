@@ -8,6 +8,7 @@ const MainContainer = styled.div`
   display: flex;
   height: 100vh;
   width: 100vw;
+  background-color: #c4d0e0;
 `
 
 export default class App extends React.Component{
