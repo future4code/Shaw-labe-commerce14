@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Card from "./Card"
 import Prod1 from "./imagens/Astronomia.jpg"
+import Carrinho from "./Carrinho";
+
 
 const PaginaCentral = styled.div`
     display: flex;
