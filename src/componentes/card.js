@@ -7,11 +7,11 @@ const Item = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 22.5%;
+    background-color: #f0f3f7;
     height: 40vh;
     border: 1px solid black;
     border-radius: 16px;
-    margin: 0 0.5em;
+    margin: 0.5em 0.5em;
     
     img{
         width: 100%;
@@ -25,6 +25,8 @@ const Item = styled.div`
 
     button {
         align-self: center;
+        margin-bottom: 1em;
+        border-radius: 5px;
     } 
 `
 
@@ -53,7 +55,7 @@ export default class Card extends React.Component{
         return (
             <Item>
                 
-                <img src={this.props.linkDaImagem} />
+                <img src={this.props.linkDaImagem} alt="Produto" />
                 <h4>{this.props.nomeDoProduto}</h4>
                 <p>R$ {this.props.valorDoProduto}</p>
                 <button 
