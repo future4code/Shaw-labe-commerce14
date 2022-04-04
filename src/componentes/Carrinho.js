@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
-
 const BarraDireita = styled.div`
     display: flex;
     flex-direction: column;
@@ -25,8 +23,6 @@ const BarraDireita = styled.div`
         display: flex;
         flex-direction: column;
     }
-
-
 `
 const TabelaCarrinho = styled.div`
     display: flex;
@@ -36,50 +32,34 @@ const TabelaCarrinho = styled.div`
         border-radius: 5px;
         width: 50%;
     }
-
 `
-
-
-
 
 export default class Carrinho extends React.Component{
 
     deletaElemento = (event) => {
         this.props.deleta(event.target.value)
-    
     }
     
     render(){
-
-        
-        
-        
+ 
         let soma = 0
 
-        const carrinhoDeCompras = this.props.lista.map((elemento,index)=>{
-            
-            
+        const carrinhoDeCompras = this.props.lista.map((elemento,index)=>{ 
             return (
-            <TabelaCarrinho>
-            <p>{elemento.nome} - {elemento.valor}</p>
-             <button
-             value={index}
-             onClick={this.deletaElemento}
-             >Deletar</button>
-             </TabelaCarrinho>   
+                <TabelaCarrinho>
+                    <p>{elemento.nome} - {elemento.valor}</p>
+                    <button
+                    value={index}
+                    onClick={this.deletaElemento}
+                    >Deletar</button>
+                </TabelaCarrinho>   
             )
         })
-        
-        
 
         const somaCarrinho = this.props.lista.map((elemento)=>{
-
             return soma+=elemento.valor
         })
 
-        
-        
-        
         return(
             <BarraDireita>
                 <h3>Carrinho De Compras</h3>
