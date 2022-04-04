@@ -6,21 +6,20 @@ Um e-commerce de itens espaciais.
 
 ## :heavy_check_mark: O que funciona
 * Ordenação (Crescente, Decrescente);
-* Filtros.
-
-## :x: O que não funciona
+* Filtros;
 * Botão adicionar no carrinho;
 * Carrinho.
 
+## :x: O que não funciona
+*
+
 ## :link: Link Surge 
-* [Site](https://crowded-account.surge.sh/)
+* [Site](https://perfect-addition.surge.sh/)
 
 ## :camera: Imagens
 
 ### **DESKTOP**
-![image](https://user-images.githubusercontent.com/98998030/161407127-5822d96a-4d8c-43ff-8f65-a4a9c1bbcfb2.png)
-
-![image](https://user-images.githubusercontent.com/98998030/161407107-f23e6dcd-f0b1-4505-b179-191b9c890a10.png)
+![image](https://user-images.githubusercontent.com/98998030/161466296-bf5bd2e4-5217-4491-a58a-3150a17cd399.png)
 
 ## :black_nib: Autores
 
