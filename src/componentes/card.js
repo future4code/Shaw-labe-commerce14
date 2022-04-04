@@ -32,15 +32,14 @@ const Item = styled.div`
 
 export default class Card extends React.Component{
 
-    vetor = []
+    
     
     onClickCarrinho = () =>{
       let novo ={
           nome:this.props.nomeDoProduto,
           valor:this.props.valorDoProduto,
-          id: this.props.idProduto
+          id: Date.now()
       }
-       this.vetor.push(novo)
 
       this.props.recupera(novo)
     }

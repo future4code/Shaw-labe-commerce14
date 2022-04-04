@@ -20,20 +20,49 @@ const BarraDireita = styled.div`
     p {
         margin-left: 1em;
     }
+    
+    div{
+        display: flex;
+        flex-direction: column;
+    }
+
+
+`
+const tabelaCarrinho = styled.div`
+    display: flex;
+    flex-direction: row;
+
 `
 
 
+
+
 export default class Carrinho extends React.Component{
+
+    deletaElemento = (event) => {
+        this.props.deleta(event.target.value)
+    
+    }
+    
     render(){
+
+        
         
         
         let soma = 0
 
-        const carrinhoDeCompras = this.props.lista.map((elemento)=>{
+        const carrinhoDeCompras = this.props.lista.map((elemento,index)=>{
             
             
-            return <p>{elemento.nome} - {elemento.valor}</p> 
-            
+            return (
+            <tabelaCarrinho>
+            <p>{elemento.nome} - {elemento.valor}</p>
+             <button
+             value={index}
+             onClick={this.deletaElemento}
+             >Deletar</button>
+             </tabelaCarrinho>   
+            )
         })
         
         

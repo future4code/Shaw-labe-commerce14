@@ -65,16 +65,16 @@ export class Produtos extends React.Component {
         
     }
 
-    produtos = []
+    //produtos = []
 
     onChangeOrdenar = (event) => {
         this.setState({ ordenar: event.target.value })
     }
 
-    recuperaCarrinho = (elemento) =>{
-        this.produtos.push(elemento)
+    recuperaCarrinho = (novo) =>{
+        //this.produtos.push(elemento)
 
-        this.props.recupera(this.produtos)
+        this.props.recupera(novo)
     }
   
 
